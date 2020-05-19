@@ -1,5 +1,5 @@
-From,To,Distance(Km.),Cost(Rs.),Passengers,Amount(Rs.)
-Hoshiarpur,Chandigarh,135,202,2,404
-Patiala,Rajpura,28,84,3,252
-Zirakpur,Punjabi Uni.,63,94,2,188
-Patiala,Rajpura,28,42,3,126
+Source,Destination,Distance,Cost,Passenger,Total
+Hoshiarpur,Chandigarh,135,405,3,1215
+Chandigarh,Punjabi Uni.,76,114,5,570
+Punjabi Uni.,Airport Lights,58,87,2,174
+Ropar,Mahilpur,70,105,3,315

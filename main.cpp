@@ -8,7 +8,6 @@ class ticket //declaration of class
 	public: string destination[100];
 	public: int passenger[100];
 	public: ofstream myFile;
-	
 	public: int Distance(int dis[], int i, int j);  // to calculate the distance between source and destination 
 	public: void print(string arr[],int a, int b);  // to print any array for a given starting index to a given ending index
 	public: int cost(int d);  //to calulate the cost for the given distance
@@ -63,7 +62,6 @@ void ticket:: ticketPrint(int dx,int c,int p,string r[], int x, int y){ // this 
 	cout<<"-------------------------"<<endl;
 	cout<<"HAVE A HAPPY AND SAFE JORUNEY!"<<endl;
 	cout<<"-------------------------"<<endl;
-	
 	myFile.open("Tickets.csv",ios::app);
 	myFile<<r[x]<<","<<r[y]<<","<<dx<<","<<c<<","<<p<<","<<p*c<<endl;
 	
