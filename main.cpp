@@ -1,5 +1,5 @@
 #include <iostream> //header files
-#include<fstream>
+#include<fstream> //for file handling
 using namespace std;
 class ticket //declaration of class
 {
@@ -16,7 +16,8 @@ class ticket //declaration of class
 	public: void copyint(int a[],int b[]); //to copy integer array
 };
 
-int ticket :: Distance(int dis[], int i, int j){ //it takes an array which has distance between the stops along with the source and destination index.
+int ticket :: Distance(int dis[], int i, int j){ 
+    //it takes an array which has distance between the stops along with the source and destination index.
 	int d=0;
 	for(int a=i;a<j;a++)
 	d=d+dis[a];
@@ -24,31 +25,34 @@ int ticket :: Distance(int dis[], int i, int j){ //it takes an array which has d
 	return(d);
 }
 
-void ticket:: print(string arr[],int a, int b){ // this array is to print the array from its starting index to the given last index
+void ticket:: print(string arr[],int a, int b){ 
+    // this array is to print the array from its starting index to the given last index
 	for(int i=a;i<b;i++)
 	cout<<i<<" "<<arr[i]<<endl;
 }
 
 int ticket::cost(int d){  
 	cout<<"-------------------------------------------"<<endl;
-	cout<<"Select the type of bus."<<endl;   // two types of buses so the user has to choose the type of bus
+	cout<<"Select the type of bus."<<endl;  
+	// two types of buses so the user has to choose the type of bus
 	cout<<"1 for AC Bus (Rs.3 per Km)"<<endl;
 	cout<<"2 for Non-AC Bus(Rs. 1.5 per Km)"<<endl;
 	cout<<"-------------------------------------------"<<endl;
 	int o,c;
 	cin>>o;
 	if(o==1){
-		c=d*1.5;
+		c=d*3; //for AC bus
 	}
 	else if(o==2){
-		c=d*3;
+		c=d*1.5; //for Non-AC bus
 	}
 	else{
 	cout<<"Wrong Choice"<<endl;
 	}
-	return(c);
+	return(c); //returning the calculated cost
 }
-void ticket:: ticketPrint(int dx,int c,int p,string r[], int x, int y){ // this function is used to print the ticket invoice.
+void ticket:: ticketPrint(int dx,int c,int p,string r[], int x, int y){ 
+    // this function is used to print the ticket invoice.
 	cout<<"-------------------------------------------"<<endl;
 	cout<<"-------------------------------------------"<<endl;
 	cout<<"Ticket Invoice"<<endl;
@@ -62,8 +66,11 @@ void ticket:: ticketPrint(int dx,int c,int p,string r[], int x, int y){ // this 
 	cout<<"-------------------------"<<endl;
 	cout<<"HAVE A HAPPY AND SAFE JORUNEY!"<<endl;
 	cout<<"-------------------------"<<endl;
-	myFile.open("Tickets.csv",ios::app);
-	myFile<<r[x]<<","<<r[y]<<","<<dx<<","<<c<<","<<p<<","<<p*c<<endl;
+	
+	//creating and opening the file name Tickets.csv
+	myFile.open("Tickets.csv",ios::app); 
+	//adding the deatiled ticket to the file for records
+	myFile<<r[x]<<","<<r[y]<<","<<dx<<","<<c<<","<<p<<","<<p*c<<endl; 
 	
 	
 }
@@ -88,18 +95,29 @@ int main() {
 	cout << "Welcome to Bus Ticket System \n ";
 	cout<<"-------------------------------------------"<<endl;
 	cout<<"-------------------------------------------"<<endl;
-	string route1[10]={"Hoshiarpur","Mahilpur","Saila Khurd","Garhshankar","Balachaur","Ropar","Kurali","Kharar","Mohali","Chandigarh"};
-		int dis1[9]={23,8,12,25,25,16,13,9,4};
-		string route2[10]={"Chnadigarh","Mohali","Kharar","Kurali","Ropar","Balachaur","Garhshankar","Saila Khurd","Mahilpur","Hoshiarpur"};
-		int dis2[9]={4,9,13,16,25,25,12,8,23};
-		string route3[10]={"Chandigarh","Zirakpur","Airport Lights","Banur","Chitkara", "Rajpura","Patiala Toll","Bahadurgarh","Punjabi Uni.","Patiala"};
-		int dis3[9]={13,5,20,9,8,15,3,3,7};
-		string route4[10]={"Patiala","Punjabi Uni.","Bahadurgarh","Patiala Toll","Rajpura","Chitkara","Banur","Airport Lights","Zirakpur","Chandigarh"};
-		int dis4[9]={7,3,3,15,8,9,20,5,13};
-		int x,y,k,di,ct,p;
-		string route[10];
-		int dis[9];
 	
+	//initializing the routes and distances
+	string route1[10]={"Hoshiarpur","Mahilpur","Saila Khurd","Garhshankar","Balachaur","Ropar","Kurali","Kharar","Mohali","Chandigarh"};
+	int dis1[9]={23,8,12,25,25,16,13,9,4};
+	string route2[10]={"Chnadigarh","Mohali","Kharar","Kurali","Ropar","Balachaur","Garhshankar","Saila Khurd","Mahilpur","Hoshiarpur"};
+	int dis2[9]={4,9,13,16,25,25,12,8,23};
+	string route3[10]={"Chandigarh","Zirakpur","Airport Lights","Banur","Chitkara", "Rajpura","Patiala Toll","Bahadurgarh","Punjabi Uni.","Patiala"};
+	int dis3[9]={13,5,20,9,8,15,3,3,7};
+	string route4[10]={"Patiala","Punjabi Uni.","Bahadurgarh","Patiala Toll","Rajpura","Chitkara","Banur","Airport Lights","Zirakpur","Chandigarh"};
+	int dis4[9]={7,3,3,15,8,9,20,5,13};
+	char ch;
+	cout<<"Enter any alphabet to Begin"<<endl;
+	cin>>ch;
+	//initialization of various variables used in swtich cases
+	int x,y,k,di,ct,p;
+	string route[10];
+	int dis[9];
+	
+	while(ch!='E'|| ch!='e')
+	{
+		char exit;
+		
+	cout<<"Select any one option and enter the approproiate number: "<<endl;
 	cout<<"1. To get the ticket"<<endl;
 	cout<<"2. To get the ticket history"<<endl;
 	cin>>ti;
@@ -175,5 +193,11 @@ int main() {
 		cout<<"WRONG INPUT!!"<<endl;
 	}
 	cout<<"\n\n*******************************************"<<endl;
+	
+	cout<<"Enter E OR e to exit and Y to continue"<<endl;
+	cin>>exit;
+	if(exit=='E' || exit=='e') break;
+	
+}
 	return(0);
 }
